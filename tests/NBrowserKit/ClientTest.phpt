@@ -41,8 +41,6 @@ class ClientTest extends TestCase
 
 		Assert::same(200, $client->getResponse()->getStatus());
 		Assert::same('It works!', $client->getResponse()->getContent());
-
-		\Mockery::close();
 	}
 
 

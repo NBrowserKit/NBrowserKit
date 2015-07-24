@@ -7,7 +7,6 @@ use Nette\Application\IPresenterFactory;
 use Nette\Application\IRouter;
 use Nette\DI\Container;
 use Nette\Http\IRequest;
-use Nette\Http\Response;
 use Symfony\Component\BrowserKit;
 
 

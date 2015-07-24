@@ -18,6 +18,8 @@ This package implements [Symfony's BrowserKit](https://github.com/symfony/Browse
 
 You can find more [examples in The Symfony Book](http://symfony.com/doc/current/book/testing.html#functional-tests).
 
+Example of usage with Nette and Nette Tester: https://github.com/VaclavSir/NBrowserKit-example
+
 ## Running Tests
 
 Tests for this package are written using [Nette Tester](http://tester.nette.org/) library. You can run them easily from the command line:

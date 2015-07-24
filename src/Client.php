@@ -43,6 +43,16 @@ class Client extends BrowserKit\Client
 
 
 	/**
+	 * @return IRequest|NULL
+	 */
+	public function getRequest()
+	{
+		return parent::getRequest();
+	}
+
+
+
+	/**
 	 * Makes a request.
 	 *
 	 * @param IRequest $request

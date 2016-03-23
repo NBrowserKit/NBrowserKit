@@ -17,6 +17,13 @@ class Response extends NetteResponse
 
 
 
+	public function __construct()
+	{
+		// Intentionally not calling the parent constructor (parent constructor causes side effects).
+	}
+
+
+
 	/**
 	 * @param string $name
 	 * @param string $value

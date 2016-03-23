@@ -56,6 +56,16 @@ class ResponseTest extends TestCase
 		$response->setHeader('foo', 'something else');
 		Assert::same(['foo' => 'something else'], $response->getHeaders());
 	}
+
+
+
+	public function testDefaultResponseCodeIs200()
+	{
+		http_response_code(418);
+		$response = new Response;
+		Assert::same(200, $response->getCode());
+	}
+
 }
 
 

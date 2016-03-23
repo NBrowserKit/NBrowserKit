@@ -99,6 +99,14 @@ class ClientTest extends TestCase
 			->with(IRouter::class)
 			->once()
 			->andReturn(\Mockery::mock(IRouter::class));
+		$container
+			->shouldReceive('removeService')
+			->with('application')
+			->once();
+		$container
+			->shouldReceive('addService')
+			->with('application', \Mockery::type(Application::class))
+			->once();
 
 		return $container;
 	}

@@ -81,6 +81,8 @@ class Client extends BrowserKit\Client
 			$request,
 			$response
 		);
+		$this->container->removeService('application');
+		$this->container->addService('application', $application);
 
 		ob_start();
 		$application->run();

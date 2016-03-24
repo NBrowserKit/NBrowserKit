@@ -64,6 +64,8 @@ class ResponseTest extends TestCase
 		http_response_code(418);
 		$response = new Response;
 		Assert::same(200, $response->getCode());
+
+		http_response_code(200); // When running tests using vendor/bin/tester, it checks the HTTP code for some reason
 	}
 
 }

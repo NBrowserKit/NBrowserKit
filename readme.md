@@ -1,5 +1,8 @@
 # NBrowserKit
 
+[![Tests](https://circleci.com/gh/VaclavSir/NBrowserKit.svg?style=shield)](https://circleci.com/gh/VaclavSir/NBrowserKit)
+[![Current version](https://img.shields.io/packagist/v/vaclav-sir/n-browser-kit.svg)](https://packagist.org/packages/vaclav-sir/n-browser-kit)
+
 This package implements [Symfony's BrowserKit](https://github.com/symfony/BrowserKit) Client for use with a [Nette](http://nette.org/) application.
 
 ## Usage

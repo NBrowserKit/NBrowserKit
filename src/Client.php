@@ -7,6 +7,7 @@ use Nette\Application\IPresenterFactory;
 use Nette\Application\IRouter;
 use Nette\DI\Container;
 use Nette\Http\IRequest;
+use Nette\Http\IResponse;
 use Symfony\Component\BrowserKit;
 
 
@@ -75,12 +76,7 @@ class Client extends BrowserKit\Client
 		$presenterFactory = $this->container->getByType(IPresenterFactory::class);
 		/** @var IRouter $router */
 		$router = $this->container->getByType(IRouter::class);
-		$application = new Application(
-			$presenterFactory,
-			$router,
-			$request,
-			$response
-		);
+		$application = $this->createApplication($request, $presenterFactory, $router, $response);
 		$this->container->removeService('application');
 		$this->container->addService('application', $application);
 
@@ -102,6 +98,18 @@ class Client extends BrowserKit\Client
 	protected function filterRequest(BrowserKit\Request $request)
 	{
 		return RequestConverter::convertRequest($request);
+	}
+
+	protected function createApplication(IRequest $request, IPresenterFactory $presenterFactory, IRouter $router, IResponse $response)
+	{
+		$application = new Application(
+			$presenterFactory,
+			$router,
+			$request,
+			$response
+		);
+
+		return $application;
 	}
 
 }

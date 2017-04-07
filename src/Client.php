@@ -33,6 +33,20 @@ class Client extends BrowserKit\Client
 
 
 	/**
+	 * @return Container
+	 */
+	protected function getContainer()
+	{
+		if ($this->container === NULL) {
+			throw new MissingContainerException('Container is missing, use setContainer() method to set it.');
+		}
+
+		return $this->container;
+	}
+
+
+
+	/**
 	 * @return BrowserKit\Response
 	 */
 	public function getResponse()
@@ -61,24 +75,22 @@ class Client extends BrowserKit\Client
 	 */
 	protected function doRequest($request)
 	{
-		if ($this->container === NULL) {
-			throw new MissingContainerException('Container is missing, use setContainer() method to set it.');
-		}
+		$container = $this->getContainer();
 
 		$response = new Response;
 
-		$this->container->removeService('httpRequest');
-		$this->container->addService('httpRequest', $request);
-		$this->container->removeService('httpResponse');
-		$this->container->addService('httpResponse', $response);
+		$container->removeService('httpRequest');
+		$container->addService('httpRequest', $request);
+		$container->removeService('httpResponse');
+		$container->addService('httpResponse', $response);
 
 		/** @var IPresenterFactory $presenterFactory */
-		$presenterFactory = $this->container->getByType(IPresenterFactory::class);
+		$presenterFactory = $container->getByType(IPresenterFactory::class);
 		/** @var IRouter $router */
-		$router = $this->container->getByType(IRouter::class);
+		$router = $container->getByType(IRouter::class);
 		$application = $this->createApplication($request, $presenterFactory, $router, $response);
-		$this->container->removeService('application');
-		$this->container->addService('application', $application);
+		$container->removeService('application');
+		$container->addService('application', $application);
 
 		ob_start();
 		$application->run();

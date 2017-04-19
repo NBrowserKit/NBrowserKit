@@ -7,18 +7,13 @@ namespace Test\NBrowserKit;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-use Mockery\MockInterface;
 use NBrowserKit\Client;
 use Nette\Application\Application;
-use Nette\Application\IRouter;
 use Nette\Application\IPresenterFactory;
+use Nette\Application\IRouter;
 use Nette\DI\Container;
-use Nette\Http\IRequest;
-use Nette\Http\IResponse;
 use Tester\Assert;
 use Tester\TestCase;
-
-
 
 class ClientTest extends TestCase
 {
@@ -32,10 +27,8 @@ class ClientTest extends TestCase
 			->andReturnUsing(function () {
 				echo 'It works!';
 			});
-		$container = $this->prepareContainer();
-
 		$client = new Client;
-		$client->setContainer($container);
+		$client->setContainer($this->prepareContainer());
 
 		$client->request('POST', '/foo', ['foo' => 'bar']);
 
@@ -61,52 +54,27 @@ class ClientTest extends TestCase
 		\Mockery::close();
 	}
 
-
-
-	/**
-	 * @return Container|MockInterface
-	 */
-	private function prepareContainer()
+	private function prepareContainer(): Container
 	{
-		$container = \Mockery::mock(Container::class);
-		$container
-			->shouldReceive('removeService')
-			->with('httpRequest')
-			->once();
-		$container
-			->shouldReceive('removeService')
-			->with('httpResponse')
-			->once();
-		$container
-			->shouldReceive('addService')
-			->with('httpRequest', \Mockery::on(function ($request) {
-				return ($request instanceof IRequest) && ((string) $request->getUrl() === 'http://localhost/foo');
-			}))
-			->once();
-		$container
-			->shouldReceive('addService')
-			->with('httpResponse', \Mockery::on(function ($response) {
-				return ($response instanceof IResponse);
-			}))
-			->once();
-		$container
-			->shouldReceive('getByType')
-			->with(IPresenterFactory::class)
-			->once()
-			->andReturn(\Mockery::mock(IPresenterFactory::class));
-		$container
-			->shouldReceive('getByType')
-			->with(IRouter::class)
-			->once()
-			->andReturn(\Mockery::mock(IRouter::class));
-		$container
-			->shouldReceive('removeService')
-			->with('application')
-			->once();
-		$container
-			->shouldReceive('addService')
-			->with('application', \Mockery::type(Application::class))
-			->once();
+		$container = new class extends Container
+		{
+			protected $meta = [
+				self::TYPES => [
+					'Nette\Application\IPresenterFactory' => [
+						true => [
+							'presenterFactory',
+						],
+					],
+					'Nette\Application\IRouter' => [
+						true => [
+							'router',
+						],
+					],
+				],
+			];
+		};
+		$container->addService('presenterFactory', \Mockery::mock(IPresenterFactory::class));
+		$container->addService('router', \Mockery::mock(IRouter::class));
 
 		return $container;
 	}

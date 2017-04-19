@@ -8,7 +8,7 @@ namespace Test\NBrowserKit;
 require_once __DIR__ . '/../bootstrap.php';
 
 use NBrowserKit\Response;
-use Nette\Http\Response as NetteResponse;
+use Nette\Http\IResponse as NetteResponse;
 use Tester\Assert;
 use Tester\TestCase;
 

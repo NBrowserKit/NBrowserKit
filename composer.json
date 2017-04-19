@@ -11,14 +11,14 @@
 		}
 	],
 	"require": {
-		"php": "~5.6 || ~7.0",
+		"php": "~5.6 || ~7.0 || ~7.1",
 		"nette/application": "^2.3.0",
 		"nette/bootstrap": "^2.3.0",
 		"nette/caching": "^2.3.0",
 		"nette/di": "^2.3.0",
 		"nette/http": "^2.3.0",
 		"tracy/tracy": "^2.3",
-		"symfony/browser-kit": "^2.7"
+		"symfony/browser-kit": "^3.2"
 	},
 	"require-dev": {
 		"nette/tester": "~1.3",

@@ -17,7 +17,7 @@
 		"nette/caching": "^3.0",
 		"nette/di": "^3.0",
 		"nette/http": "^3.0",
-		"tracy/tracy": "^2.3",
+		"tracy/tracy": "^2.6",
 		"symfony/browser-kit": "^3.2 | ^4.0"
 	},
 	"require-dev": {

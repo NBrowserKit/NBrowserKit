@@ -20,7 +20,7 @@ use Tester\TestCase;
 class RequestConverterTest extends TestCase
 {
 
-	public function testReturnsNetteHttpIRequest()
+	public function testReturnsNetteHttpIRequest(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/', 'GET');
 		$output = RequestConverter::convertRequest($input);
@@ -30,7 +30,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsUrl()
+	public function testConvertsUrl(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/tadaa', 'POST', ['foo' => 'bar']);
 		$output = RequestConverter::convertRequest($input);
@@ -42,7 +42,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsQueryString()
+	public function testConvertsQueryString(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/?e=mc^2', 'GET');
 		$output = RequestConverter::convertRequest($input);
@@ -52,7 +52,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsMethod()
+	public function testConvertsMethod(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/', 'POST', ['foo' => 'bar']);
 		$output = RequestConverter::convertRequest($input);
@@ -62,7 +62,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsBodyParameters()
+	public function testConvertsBodyParameters(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/', 'POST', ['foo' => 'bar']);
 		$output = RequestConverter::convertRequest($input);
@@ -72,7 +72,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsFiles()
+	public function testConvertsFiles(): void
 	{
 		$files = [
 			'first' => [
@@ -112,7 +112,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsFilesMultiple()
+	public function testConvertsFilesMultiple(): void
 	{
 		$files = [
 			'foo' => [
@@ -145,7 +145,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsCookies()
+	public function testConvertsCookies(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/', 'GET', [], [], ['PHPSESSID' => 'bflmpsvz']);
 		$output = RequestConverter::convertRequest($input);
@@ -155,7 +155,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsHeaders()
+	public function testConvertsHeaders(): void
 	{
 		$serverVariables = [
 			'HTTP_HOST' => 'www.damejidlo.cz',
@@ -176,7 +176,7 @@ class RequestConverterTest extends TestCase
 
 
 
-	public function testConvertsContent()
+	public function testConvertsContent(): void
 	{
 		$input = new BrowserKit\Request('http://example.com/', 'POST', [], [], [], [], 'Guten Tag');
 		$output = RequestConverter::convertRequest($input);

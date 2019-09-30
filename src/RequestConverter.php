@@ -25,7 +25,6 @@ class RequestConverter
 	{
 		return new Request(
 			new UrlScript($request->getUri()),
-			NULL,
 			$request->getParameters(),
 			self::convertFiles($request->getFiles()),
 			$request->getCookies(),

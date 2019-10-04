@@ -1,7 +1,6 @@
 # NBrowserKit
 
-[![Shippable](https://api.shippable.com/projects/55ac135dedd7f2c05278651d/badge?branch=master)](https://app.shippable.com/projects/55ac135dedd7f2c05278651d)
-[![CircleCI](https://circleci.com/gh/VaclavSir/NBrowserKit.svg?style=shield)](https://circleci.com/gh/VaclavSir/NBrowserKit)
+[![Build Status](https://travis-ci.org/NBrowserKit/NBrowserKit.svg?branch=master)](https://travis-ci.org/NBrowserKit/NBrowserKit)
 [![Current version](https://img.shields.io/packagist/v/vaclav-sir/n-browser-kit.svg)](https://packagist.org/packages/vaclav-sir/n-browser-kit)
 
 This package implements [Symfony's BrowserKit](https://github.com/symfony/BrowserKit) Client for use with a [Nette](http://nette.org/) application.

@@ -8,7 +8,7 @@ namespace Test\NBrowserKit;
 require_once __DIR__ . '/../bootstrap.php';
 
 use NBrowserKit\Response;
-use Nette\Http\Response as NetteResponse;
+use Nette\Http\IResponse;
 use Tester\Assert;
 use Tester\TestCase;
 
@@ -17,15 +17,15 @@ use Tester\TestCase;
 class ResponseTest extends TestCase
 {
 
-	public function testExtendsNetteResponse()
+	public function testExtendsNetteResponse(): void
 	{
 		$response = new Response;
-		Assert::type(NetteResponse::class, $response);
+		Assert::type(IResponse::class, $response);
 	}
 
 
 
-	public function testAddHeader()
+	public function testAddHeader(): void
 	{
 		$response = new Response;
 		$response->addHeader('foo', 'bar');
@@ -36,7 +36,7 @@ class ResponseTest extends TestCase
 
 
 
-	public function testRemoveHeader()
+	public function testRemoveHeader(): void
 	{
 		$response = new Response;
 		$response->addHeader('foo', 'bar');
@@ -48,7 +48,7 @@ class ResponseTest extends TestCase
 
 
 
-	public function testSetHeader()
+	public function testSetHeader(): void
 	{
 		$response = new Response;
 		$response->addHeader('foo', 'bar');
@@ -59,7 +59,7 @@ class ResponseTest extends TestCase
 
 
 
-	public function testDefaultResponseCodeIs200()
+	public function testDefaultResponseCodeIs200(): void
 	{
 		http_response_code(418);
 		$response = new Response;

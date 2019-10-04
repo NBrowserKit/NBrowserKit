@@ -1,3 +1,4 @@
 temp/*
 vendor/*
 composer.lock
+tests/NBrowserKit/output

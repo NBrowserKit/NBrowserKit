@@ -1,13 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace NBrowserKit;
 
 
-use Nette\Http\Response as NetteResponse;
-
-
-
-class Response extends NetteResponse
+final class Response extends NetteResponseProxy
 {
 
 	/**
@@ -24,50 +20,7 @@ class Response extends NetteResponse
 
 
 
-	/**
-	 * @param string $name
-	 * @param string $value
-	 * @return static
-	 */
-	public function addHeader($name, $value)
-	{
-		$this->headers[$name] = $value;
-
-		return $this;
-	}
-
-
-
-	/**
-	 * @return array
-	 */
-	public function getHeaders()
-	{
-		return $this->headers;
-	}
-
-
-
-	/**
-	 * @param string $header
-	 * @param string $default
-	 * @return string
-	 */
-	public function getHeader($header, $default = NULL)
-	{
-		return array_key_exists($header, $this->headers) ? $this->headers[$header] : $default;
-	}
-
-
-
-	/**
-	 * Sends a HTTP header and replaces a previous one.
-	 *
-	 * @param  string $name
-	 * @param  string $value
-	 * @return static
-	 */
-	public function setHeader($name, $value)
+	public function setHeader(string $name, ?string $value): self
 	{
 		if ($value === NULL) {
 			unset($this->headers[$name]);
@@ -76,6 +29,37 @@ class Response extends NetteResponse
 		}
 
 		return $this;
+	}
+
+
+
+	public function addHeader(string $name, string $value): self
+	{
+		$this->headers[$name] = $value;
+
+		return $this;
+	}
+
+
+	public function deleteHeader(string $name): self
+	{
+		unset($this->headers[$name]);
+
+		return $this;
+	}
+
+
+
+	public function getHeader(string $header): ?string
+	{
+		return $this->headers[$header] ?? null;
+	}
+
+
+
+	public function getHeaders(): array
+	{
+		return $this->headers;
 	}
 
 }

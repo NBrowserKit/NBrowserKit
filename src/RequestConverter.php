@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace NBrowserKit;
 
@@ -25,7 +25,6 @@ class RequestConverter
 	{
 		return new Request(
 			new UrlScript($request->getUri()),
-			NULL,
 			$request->getParameters(),
 			self::convertFiles($request->getFiles()),
 			$request->getCookies(),

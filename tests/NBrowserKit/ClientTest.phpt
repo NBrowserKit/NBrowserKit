@@ -23,7 +23,7 @@ use Tester\TestCase;
 class ClientTest extends TestCase
 {
 
-	public function testRequest()
+	public function testRequest(): void
 	{
 		$application = \Mockery::mock('overload:' . Application::class);
 		$application
@@ -48,7 +48,7 @@ class ClientTest extends TestCase
 	/**
 	 * @throws \NBrowserKit\MissingContainerException
 	 */
-	public function testThrowsUpIfContainerIsNotSet()
+	public function testThrowsUpIfContainerIsNotSet(): void
 	{
 		$client = new Client;
 		$client->request('POST', '/foo', ['foo' => 'bar']);

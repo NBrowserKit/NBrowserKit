@@ -5,5 +5,16 @@ php:
   - 7.2
   - 7.3
 
+install:
+  - composer update $COMPOSER_FLAGS
+
+
 script:
-    - vendor/bin/tester tests
+  - vendor/bin/tester tests
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+notifications:
+  email: false

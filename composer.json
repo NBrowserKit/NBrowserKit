@@ -1,5 +1,5 @@
 {
-	"name": "vaclav-sir/n-browser-kit",
+	"name": "n-browser-kit/n-browser-kit",
 	"description": "Implementation of Symfony's BrowserKit for Nette applications.",
 	"homepage": "http://github.com/VaclavSir/NBrowserKit",
 	"type": "library",

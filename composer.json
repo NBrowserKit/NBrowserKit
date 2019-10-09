@@ -8,6 +8,10 @@
 		{
 			"name": "Václav Šír",
 			"homepage": "http://github.com/VaclavSir"
+		},
+		{
+			"name": "Jan Mikeš",
+			"homepage": "http://github.com/JanMikes"
 		}
 	],
 	"require": {

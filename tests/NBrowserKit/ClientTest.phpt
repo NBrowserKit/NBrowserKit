@@ -39,7 +39,7 @@ class ClientTest extends TestCase
 
 		$client->request('POST', '/foo', ['foo' => 'bar']);
 
-		Assert::same(200, $client->getResponse()->getStatus());
+		Assert::same(200, $client->getResponse()->getStatusCode());
 		Assert::same('It works!', $client->getResponse()->getContent());
 	}
 

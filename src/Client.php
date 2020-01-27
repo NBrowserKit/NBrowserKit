@@ -12,7 +12,7 @@ use Symfony\Component\BrowserKit;
 
 
 
-class Client extends BrowserKit\Client
+class Client extends BrowserKit\AbstractBrowser
 {
 
 	/**

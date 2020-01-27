@@ -14,7 +14,7 @@ This package implements [Symfony's BrowserKit](https://github.com/symfony/Browse
 
 	$client->request('GET', '/');
 
-	Assert::same(200, $client->getResponse()->getStatus());
+	Assert::same(200, $client->getResponse()->getStatusCode());
 	Assert::contains('Hello World', $client->getResponse()->getContent());
 
 ```
